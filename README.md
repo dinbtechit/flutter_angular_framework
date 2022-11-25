@@ -5,7 +5,7 @@
 This is a Simple Dependency Inject Library created to experiment the potential
 of [Reflectable](https://pub.dev/packages/reflectable).
 
-It works very similar to `get_it`+ `injectable` package (but it does not support all the
+It works very similar to `get_it`+ `injectable` package (but does not support all the
 functionalities). 
 
 ## Installation:
@@ -13,8 +13,11 @@ functionalities).
 1. Install Package using CLI
     ```shell
     # Flutter
+    flutter pub add reflectable 
     flutter pub add build_runner --dev
+    
     # Dart
+    dart pub add reflectable 
     dart pub add build_runner --dev
     ```
 
@@ -32,7 +35,7 @@ functionalities).
 4. Run build Runner in watch mode:
    ```shell
    flutter pub run build_runner watch
-   # or
+   # or, for straight dart
    dart pub run build_runner watch 
    ```
 
@@ -56,7 +59,7 @@ class ProdService implements Service {
 2. Ensure you are running build Runner in watch mode:
    ```shell
    flutter pub run build_runner watch
-   # or
+   # or, for straight dart
    dart pub run build_runner watch 
    ```
 
