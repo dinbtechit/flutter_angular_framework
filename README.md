@@ -41,21 +41,21 @@ functionalities).
 
 ## Usage:
 
-1. Define Injectables by simply annotating them as `@Injectable` also pass in an optional Name.
-> When no name is provided it uses the className
-```dart
-abstract class Service {}
-
-@Injectable()    
-class LocalService implements Service {
-  
-}
-
-@Injectable()
-class ProdService implements Service {
-
-}
-```
+1. Define Injectables by simply annotating them as `@Injectable`.
+   
+   ```dart
+   abstract class Service {}
+   
+   @Injectable()    
+   class LocalService implements Service {
+     
+   }
+   
+   @Injectable()
+   class ProdService implements Service {
+   
+   }
+   ```
 2. Ensure you are running build Runner in watch mode:
    ```shell
    flutter pub run build_runner watch
@@ -64,15 +64,15 @@ class ProdService implements Service {
    ```
 
 3. To use the Injectables. Somewhere in the code. 
-For example: flutter
-```dart
-class MyWidget extends StatlessWidget {
-  var localService = getDI<LocalService>(); // Instance of localservice
-  var prodService = getDI<ProdService>(); // Instance of prodservice
-  
-   // Or you can get the service byName
-
-  var localService = getDI<Service>(byName: 'LocalService'); // Instance of localservice 
-}
-```
+   For example: In flutter
+   ```dart
+   class MyWidget extends StatlessWidget {
+     var localService = getDI<LocalService>(); // Instance of localservice
+     var prodService = getDI<ProdService>(); // Instance of prodservice
+     
+      // Or you can get the service byName
+   
+     var localService = getDI<Service>(byName: 'LocalService'); // Instance of localservice 
+   }
+   ```
 
