@@ -1,50 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_reflection_test/services/api.service.dart';
+import 'package:flutter_reflection_test/services/services.dart';
 import 'annotations/DependecyInjection.dart';
-import 'annotations/annotations.dart';
-
-@Injectable(name: 'ServiceA', deps: [ServiceB])
-class ServiceA {
-  late ServiceB serviceB;
-
-  String serviceCall() {
-    return "HelloA";
-  }
-
-  int getCount(int i) {
-    return i;
-  }
-}
-
-@Injectable(name: 'ServiceB')
-class ServiceB {
-  String serviceCall() {
-    return "HelloB";
-  }
-}
-
-@Injectable(name: 'ServiceC')
-class ServiceC {
-  String serviceCall() {
-    return "HelloC";
-  }
-}
-
-@WidgetReflector()
-class MyWidget {
-  late ServiceA serviceA; // Auto inject
-
-  MyWidget() {}
-
-  void onInit(ServiceA serviceA) {
-    this.serviceA = serviceA;
-  }
-
-  String getGreetings() {
-    return serviceA.serviceCall();
-  }
-}
-
 
 void main() {
   DependencyInjection();
@@ -76,8 +33,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var service = getDI<ServiceA>();
-  var apiService = getDI<ApiServiceIF>(byName: 'prod-apiservice');
+  var service = inject<ServiceA>();
+  var apiService = inject<ApiServiceIF>(byName: 'prod-apiservice');
 
   int _counter = 0;
 

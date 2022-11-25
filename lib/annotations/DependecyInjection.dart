@@ -1,7 +1,7 @@
 import '../main.reflectable.dart';
 import 'annotations.dart';
 
-T? getDI<T extends Object>({String? byName}) {
+T? inject<T extends Object>({String? byName}) {
   if (byName != null) {
     return DependencyInjection.objectsForDI.entries
         .toList()

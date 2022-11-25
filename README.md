@@ -67,12 +67,12 @@ functionalities).
    For example: In flutter
    ```dart
    class MyWidget extends StatlessWidget {
-     var localService = getDI<LocalService>(); // Instance of localservice
-     var prodService = getDI<ProdService>(); // Instance of prodservice
+     var localService = inject<LocalService>(); // Instance of localservice
+     var prodService = inject<ProdService>(); // Instance of prodservice
      
       // Or you can get the service byName
    
-     var localService = getDI<Service>(byName: 'LocalService'); // Instance of localservice 
+     var localService = inject<Service>(byName: 'LocalService'); // Instance of localservice 
    }
    ```
 
