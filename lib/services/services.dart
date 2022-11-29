@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import '../annotations/annotations.dart';
 
 @Injectable(name: 'ServiceA', deps: [ServiceB])

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_reflection_test/services/api.service.dart';
 import 'package:flutter_reflection_test/services/services.dart';
 import 'annotations/DependecyInjection.dart';
+import 'components/mywidget_comp.dart';
 
 void main() {
   DependencyInjection();
@@ -65,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
+            useComponent<MyWidgetComp>()!,
             Text(
               '${service?.getCount(_counter)}',
               style: Theme.of(context).textTheme.headline4,
