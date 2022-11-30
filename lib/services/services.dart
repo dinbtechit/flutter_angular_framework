@@ -4,9 +4,7 @@ import '../annotations/annotations.dart';
 
 @Injectable(name: 'ServiceA', deps: [ServiceB])
 class ServiceA {
-  late ServiceB serviceB;
-
-  String serviceCall() {
+  String getText() {
     return "HelloA";
   }
 
@@ -17,14 +15,14 @@ class ServiceA {
 
 @Injectable(name: 'ServiceB')
 class ServiceB {
-  String serviceCall() {
+  String getText() {
     return "HelloB";
   }
 }
 
 @Injectable(name: 'ServiceC')
 class ServiceC {
-  String serviceCall() {
+  String getText() {
     return "HelloC";
   }
 }

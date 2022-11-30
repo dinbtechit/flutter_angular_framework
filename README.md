@@ -6,7 +6,7 @@ This is a Simple Dependency Inject Library created to experiment the potential
 of [Reflectable](https://pub.dev/packages/reflectable).
 
 It works very similar to `get_it`+ `injectable` package (but does not support all the
-functionalities). 
+functionalities).
 
 ## Installation:
 
@@ -42,7 +42,7 @@ functionalities).
 ## Usage:
 
 1. Define Injectables by simply annotating them as `@Injectable`.
-   
+
    ```dart
    abstract class Service {}
    
@@ -56,15 +56,58 @@ functionalities).
    
    }
    ```
-2. Ensure you are running build Runner in watch mode:
+
+2. Annotate your widget with `@Component`
+   ```dart
+   @Component()
+   class Widget1 extends StatelessWidget {
+     final ServiceA serviceA;
+     final ServiceB serviceB;
+     final ServiceC serviceC;
+   
+     const Widget1(
+     {required this.serviceA,
+     required this.serviceB,
+     required this.serviceC,
+     super.key});
+   
+     @override
+     Widget build(BuildContext context) {
+      return Column(children: [
+           Text(' Data from Service A:  ${serviceA.getText()}'),
+           Text(' Data from Service B:  ${serviceB.getText()}'),
+           useComponent<Widget2>(),       // <---<< Magic happens here.
+      ]);
+   }
+   }
+   
+   @Component()
+   class Widget2 extends StatefulWidget {
+   
+     final ServiceA serviceA;
+     final ServiceB serviceB;
+     const Widget2({Key? key, required this.serviceA, required this.serviceB}) : super(key: key);
+   
+     @override
+     State<Widget2> createState() => _Widget2State();
+   }
+   
+   class _Widget2State extends State<Widget2> {
+     @override
+     Widget build(BuildContext context) {
+       return Text('stateful component ${widget.serviceB.getText()}');
+     }
+   }
+   ```
+
+4. Ensure you are running build Runner in watch mode:
    ```shell
    flutter pub run build_runner watch
    # or, for straight dart
    dart pub run build_runner watch 
    ```
 
-3. To use the Injectables. Somewhere in the code. 
-   For example: In flutter
+5. To use the Injectables. Somewhere in the code. For example: In flutter
    ```dart
    class MyWidget extends StatlessWidget {
      var localService = inject<LocalService>(); // Instance of localservice
