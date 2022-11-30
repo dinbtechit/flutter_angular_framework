@@ -9,17 +9,8 @@ class Reflector extends Reflectable {
       invokingCapability,
       typeCapability,
       typeRelationsCapability,
-      reflectedTypeCapability,
-      typeRelationsCapability,
       libraryCapability,
       metadataCapability);
-}
-
-
-class InjectableReflector extends Reflectable {
-  const InjectableReflector()
-      : super(newInstanceCapability, declarationsCapability, invokingCapability,
-      metadataCapability, typeCapability,libraryCapability);
 }
 
 class Injectable {
