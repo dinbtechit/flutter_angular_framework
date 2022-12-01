@@ -107,7 +107,7 @@ functionalities).
    }
    ```
    > For more complex use cases checkout - [lib/components/mywidget_comp.dart](lib/components/mywidget_comp.dart)
-4. To use the Injectables. Somewhere in the code. For example: In flutter
+4. To use the "Injectables" in non annotated widgets:
    ```dart
    class MyWidget extends StatlessWidget {
      var localService = inject<LocalService>(); // Instance of localservice

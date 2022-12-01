@@ -38,7 +38,7 @@ class Widget1 extends StatelessWidget {
 }
 
 @Component(provider: [
-  Provider<ApiServiceIF>(usefactory: myFactory),
+  Provider<ApiServiceIF>(useClass: ApiServiceProd),
 ])
 class Widget2 extends StatefulWidget {
   final ServiceA serviceA;
