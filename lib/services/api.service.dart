@@ -1,5 +1,6 @@
 import 'package:flutter_reflection_test/annotations/annotations.dart';
 
+@Injectable()
 abstract class ApiServiceIF {
   void handle();
 }

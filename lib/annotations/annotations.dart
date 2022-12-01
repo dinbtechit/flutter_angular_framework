@@ -23,24 +23,17 @@ class Injectable {
 }
 
 class Component {
-  final Provider? provider;
-
+  final List<Provider>? provider;
   const Component({this.provider});
 }
 
-class MultiProvider {
-  final List<Provider> providers;
-  const MultiProvider(this.providers);
-}
-
-class Provider {
-  final Type provide;
+class Provider<T> {
   final Type? useClass;
   final Object? useValue;
-  final Object? Function()? usefactory;
+  final T? Function()? usefactory;
 
   const Provider(
-      {required this.provide, this.useClass, this.useValue, this.usefactory});
+      {this.useClass, this.useValue, this.usefactory});
 }
 
 enum Scope { factory, singleton, lazySingleton }

@@ -27,7 +27,7 @@ class DependencyInjection {
 
 /// Inject helper
 /// Can be used in class that are annotated with @component.
-T? inject<T extends Object>({String? byName}) {
+T inject<T extends Object>({String? byName}) {
   if (byName != null) {
     return DependencyInjection.objectsForDI.entries
         .toList()

@@ -3,7 +3,6 @@ import '../annotations/annotations.dart';
 @Injectable(
     name: 'ServiceA',
     provider: Provider(
-        provide: ServiceA,
         useClass: ServiceB
     )
 )

@@ -8,14 +8,15 @@ import '../services/services.dart';
 ApiServiceIF myFactory() {
   const env = '';
   if (env == 'dev') {
-    return inject<ApiService>()!;
+    return inject<ApiService>();
   }
-  return  inject<ApiServiceProd>()!;
+  return inject<ApiServiceProd>();
 }
 
-@Component(provider: Provider(provide: ServiceA, usefactory: myFactory))
+@Component(provider: [
+  Provider<ApiServiceIF>(usefactory: myFactory)
+])
 class Widget1 extends StatelessWidget {
-
   final ServiceA serviceA;
   final ServiceB serviceB;
   final ServiceC serviceC;
@@ -36,12 +37,15 @@ class Widget1 extends StatelessWidget {
   }
 }
 
-@Component()
+@Component(provider: [
+  Provider<ApiServiceIF>(usefactory: myFactory),
+])
 class Widget2 extends StatefulWidget {
-
   final ServiceA serviceA;
   final ServiceB serviceB;
-  const Widget2({Key? key, required this.serviceA, required this.serviceB}) : super(key: key);
+
+  const Widget2({Key? key, required this.serviceA, required this.serviceB})
+      : super(key: key);
 
   @override
   State<Widget2> createState() => _Widget2State();
