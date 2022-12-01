@@ -41,7 +41,14 @@ functionalities).
 
 ## Usage:
 
-1. Define Injectables by simply annotating them as `@Injectable`.
+1. Ensure you are running build Runner in watch mode:
+   ```shell
+   flutter pub run build_runner watch
+   # or, for straight dart
+   dart pub run build_runner watch 
+   ```
+
+2. Define Injectables by simply annotating them as `@Injectable`.
 
    ```dart
    abstract class Service {}
@@ -57,7 +64,7 @@ functionalities).
    }
    ```
 
-2. Annotate your widget with `@Component`
+3. Annotate your widget with `@Component`
    ```dart
    @Component()
    class Widget1 extends StatelessWidget {
@@ -99,15 +106,8 @@ functionalities).
      }
    }
    ```
-
-4. Ensure you are running build Runner in watch mode:
-   ```shell
-   flutter pub run build_runner watch
-   # or, for straight dart
-   dart pub run build_runner watch 
-   ```
-
-5. To use the Injectables. Somewhere in the code. For example: In flutter
+   > For more complex use cases checkout - [lib/components/mywidget_comp.dart](lib/components/mywidget_comp.dart)
+4. To use the Injectables. Somewhere in the code. For example: In flutter
    ```dart
    class MyWidget extends StatlessWidget {
      var localService = inject<LocalService>(); // Instance of localservice
