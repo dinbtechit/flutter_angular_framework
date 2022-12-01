@@ -1,9 +1,14 @@
-import 'package:flutter/cupertino.dart';
-
 import '../annotations/annotations.dart';
 
-@Injectable(name: 'ServiceA', deps: [ServiceB])
+@Injectable(
+    name: 'ServiceA',
+    provider: Provider(
+        provide: ServiceA,
+        useClass: ServiceB
+    )
+)
 class ServiceA {
+  const ServiceA();
   String getText() {
     return "HelloA";
   }

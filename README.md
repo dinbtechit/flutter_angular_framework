@@ -25,7 +25,7 @@ functionalities).
 
 3. update `main()` method
     ```dart
-    import 'annotations/DependecyInjection.dart';
+    import 'annotations/DependencyInjection.dart';
    
     void main() {
       DependecyInjection();

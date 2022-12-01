@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reflection_test/components/mywidget_comp.dart';
 import 'package:flutter_reflection_test/services/api.service.dart';
 import 'package:flutter_reflection_test/services/services.dart';
-import 'annotations/DependecyInjection.dart';
-import 'components/mywidget_comp.dart';
+import 'annotations/DependencyInjection.dart';
 
 void main() {
   DependencyInjection();

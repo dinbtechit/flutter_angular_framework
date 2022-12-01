@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reflection_test/annotations/DependecyInjection.dart';
+import 'package:flutter_reflection_test/annotations/DependencyInjection.dart';
+import 'package:flutter_reflection_test/services/api.service.dart';
 
 import '../annotations/annotations.dart';
 import '../services/services.dart';
 
-@Component()
+ApiServiceIF myFactory() {
+  const env = '';
+  if (env == 'dev') {
+    return inject<ApiService>()!;
+  }
+  return  inject<ApiServiceProd>()!;
+}
+
+@Component(provider: Provider(provide: ServiceA, usefactory: myFactory))
 class Widget1 extends StatelessWidget {
+
   final ServiceA serviceA;
   final ServiceB serviceB;
   final ServiceC serviceC;
