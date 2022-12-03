@@ -7,16 +7,6 @@ import 'package:flutter_reflection_test/services/api.service.dart';
 import '../annotations/annotations.dart';
 import '../services/services.dart';
 
-class MyFactory {
-  static ApiServiceIF myFactory({List<Type>? deps}) {
-    const env = '';
-    if (env == 'dev') {
-      return inject<ApiService>();
-    }
-    return inject<ApiServiceProd>();
-  }
-}
-
 ApiServiceIF myFactory(ServiceA serviceA, ServiceB serviceB) {
   const env = '';
   if (env == 'dev') {
