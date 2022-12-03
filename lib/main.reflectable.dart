@@ -11,6 +11,7 @@ import 'package:flutter_reflection_test/components/mywidget_comp.dart'
 import 'package:flutter_reflection_test/services/api.service.dart' as prefix2;
 import 'package:flutter_reflection_test/services/api.service.dart';
 import 'package:flutter_reflection_test/services/services.dart' as prefix3;
+import 'package:flutter_reflection_test/services/services.dart';
 import 'package:meta/meta.dart' as prefix4;
 
 // ignore_for_file: camel_case_types
@@ -119,7 +120,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const <Object>[
               const prefix0.Component(provider: const [
                 const prefix0.Provider<ApiServiceIF>(
-                    usefactory: prefix1.myFactory)
+                    useClass: prefix2.ApiServiceProd)
               ])
             ],
             null),
@@ -157,7 +158,10 @@ final _data = <r.Reflectable, r.ReflectorData>{
             1,
             3,
             const <int>[2],
-            const <Object>[const prefix0.Injectable(name: 'local-ApiService')],
+            const <Object>[
+              const prefix0.Injectable(
+                  name: 'local-ApiService', scope: prefix0.Scope.singleton)
+            ],
             null),
         r.NonGenericClassMirrorImpl(
             r'ApiServiceProd',
@@ -175,7 +179,16 @@ final _data = <r.Reflectable, r.ReflectorData>{
             1,
             4,
             const <int>[2],
-            const <Object>[const prefix0.Injectable(name: 'prod-ApiService')],
+            const <Object>[
+              const prefix0.Injectable(
+                  name: 'prod-ApiService',
+                  scope: prefix0.Scope.lazySingleton,
+                  provider: const [
+                    const prefix0.Provider<ServiceA>(
+                        usefactory: prefix2.myFactory,
+                        deps: const [prefix3.ServiceB, prefix3.ServiceC])
+                  ])
+            ],
             null),
         r.NonGenericClassMirrorImpl(
             r'ServiceA',
@@ -194,9 +207,9 @@ final _data = <r.Reflectable, r.ReflectorData>{
             5,
             const <int>[],
             const <Object>[
-              const prefix0.Injectable(
-                  name: 'ServiceA',
-                  provider: const prefix0.Provider(useClass: prefix3.ServiceB))
+              const prefix0.Injectable(name: 'ServiceA', provider: const [
+                const prefix0.Provider(useClass: prefix3.ServiceB)
+              ])
             ],
             null),
         r.NonGenericClassMirrorImpl(

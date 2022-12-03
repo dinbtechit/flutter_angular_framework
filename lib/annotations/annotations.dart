@@ -17,7 +17,7 @@ class Reflector extends Reflectable {
 class Injectable {
   final String name;
   final Scope scope;
-  final Provider? provider;
+  final List<Provider>? provider;
 
   const Injectable({this.name = '', this.scope = Scope.factory, this.provider});
 }
@@ -27,13 +27,20 @@ class Component {
   const Component({this.provider});
 }
 
+
+
 class Provider<T> {
   final Type? useClass;
   final Object? useValue;
-  final T? Function()? usefactory;
+  final Function? usefactory;
+  final List<Type> deps;
 
-  const Provider(
-      {this.useClass, this.useValue, this.usefactory});
+ const Provider(
+      {this.useClass, this.useValue, this.usefactory, this.deps = const []});
+}
+
+class Factory<T> {
+  const Factory(T);
 }
 
 enum Scope { factory, singleton, lazySingleton }

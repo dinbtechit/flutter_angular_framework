@@ -1,13 +1,9 @@
 import '../annotations/annotations.dart';
 
-@Injectable(
-    name: 'ServiceA',
-    provider: Provider(
-        useClass: ServiceB
-    )
-)
+@Injectable(name: 'ServiceA', provider: [Provider(useClass: ServiceB)])
 class ServiceA {
   const ServiceA();
+
   String getText() {
     return "HelloA";
   }

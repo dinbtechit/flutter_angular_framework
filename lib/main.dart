@@ -42,9 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    if (apiService != null) {
-      apiService?.handle();
-    }
+    apiService.handle();
   }
 
   void _incrementCounter() {
@@ -68,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             useComponent<Widget1>(),
             Text(
-              '${service?.getCount(_counter)}',
+              '${service.getCount(_counter)}',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],

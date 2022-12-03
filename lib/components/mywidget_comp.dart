@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_reflection_test/annotations/DependencyInjection.dart';
 import 'package:flutter_reflection_test/services/api.service.dart';
@@ -5,7 +7,17 @@ import 'package:flutter_reflection_test/services/api.service.dart';
 import '../annotations/annotations.dart';
 import '../services/services.dart';
 
-ApiServiceIF myFactory() {
+class MyFactory {
+  static ApiServiceIF myFactory({List<Type>? deps}) {
+    const env = '';
+    if (env == 'dev') {
+      return inject<ApiService>();
+    }
+    return inject<ApiServiceProd>();
+  }
+}
+
+ApiServiceIF myFactory(ServiceA serviceA, ServiceB serviceB) {
   const env = '';
   if (env == 'dev') {
     return inject<ApiService>();
@@ -13,9 +25,8 @@ ApiServiceIF myFactory() {
   return inject<ApiServiceProd>();
 }
 
-@Component(provider: [
-  Provider<ApiServiceIF>(usefactory: myFactory)
-])
+@Component(
+    provider: [Provider<ApiServiceIF>(usefactory: myFactory)])
 class Widget1 extends StatelessWidget {
   final ServiceA serviceA;
   final ServiceB serviceB;
@@ -56,4 +67,12 @@ class _Widget2State extends State<Widget2> {
   Widget build(BuildContext context) {
     return Text('stateful component ${widget.serviceB.getText()}');
   }
+}
+
+extension on ServiceA {
+  autoDispose() {}
+}
+
+extension on ServiceA {
+  autoDispose() {}
 }
