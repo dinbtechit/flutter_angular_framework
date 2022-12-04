@@ -32,7 +32,7 @@ class Widget1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Text(' Data from Service A:  ${serviceA.getText()}'),
+      Text(' Data from Service A:  ${serviceA.count} - ${serviceA.hashCode}'),
       Text(' Data from Service B:  ${serviceB.getText()}'),
       useComponent<Widget2>(),
     ]);
@@ -54,9 +54,15 @@ class Widget2 extends StatefulWidget {
 }
 
 class _Widget2State extends State<Widget2> {
+
   @override
   Widget build(BuildContext context) {
     return Text('stateful component ${widget.serviceB.getText()}');
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
 

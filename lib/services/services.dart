@@ -7,10 +7,21 @@ import '../annotations/annotations.dart';
   )
 ])
 class ServiceA {
-  const ServiceA();
+
+  int count = 0;
+
+  ServiceA();
 
   String getText() {
     return "HelloA";
+  }
+
+  increment() {
+    count++;
+  }
+
+  decrement(){
+    count--;
   }
 
   int getCount(int i) {

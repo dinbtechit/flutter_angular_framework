@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reflection_test/main.dart';
 import 'package:reflectable/mirrors.dart';
 
 import '../main.reflectable.dart';
@@ -50,8 +51,6 @@ T useComponent<T extends Widget>({Key? key}) {
     var constructor = widget.declarations[widget.simpleName] as MethodMirror;
     Map<Symbol, dynamic> contructorInjectArgs = {};
 
-    print(widget.metadata);
-
     for (var element in constructor.parameters) {
       try {
         if ( element.type.metadata.isNotEmpty &&
@@ -63,7 +62,7 @@ T useComponent<T extends Widget>({Key? key}) {
           }, orElse: null);
           if (injectableClassMirror == null) continue;
           contructorInjectArgs.putIfAbsent(Symbol(element.simpleName),
-                  () => injectableClassMirror.newInstance('', []));
+                  () => inject(byName: element.simpleName));
         }
       } on Error catch (_) {
         continue;
@@ -76,5 +75,9 @@ T useComponent<T extends Widget>({Key? key}) {
     if (componentInstance is T) return componentInstance;
   }
   throw Exception('useComponent<${T.toString()}> is not annotated as `@Component()`');
+}
+
+testFunction(Function func) {
+  print('disposed');
 }
 
