@@ -9,9 +9,7 @@ import 'package:flutter_reflection_test/annotations/annotations.dart'
 import 'package:flutter_reflection_test/components/mywidget_comp.dart'
     as prefix1;
 import 'package:flutter_reflection_test/services/api.service.dart' as prefix2;
-import 'package:flutter_reflection_test/services/api.service.dart';
 import 'package:flutter_reflection_test/services/services.dart' as prefix3;
-import 'package:flutter_reflection_test/services/services.dart';
 import 'package:meta/meta.dart' as prefix4;
 
 // ignore_for_file: camel_case_types
@@ -74,7 +72,8 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const <int>[],
             const <Object>[
               const prefix0.Component(provider: const [
-                const prefix0.Provider<ApiServiceIF>(
+                const prefix0.Provider(
+                    provide: prefix2.ApiServiceIF,
                     usefactory: prefix1.myFactory)
               ])
             ],
@@ -119,45 +118,27 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const <int>[],
             const <Object>[
               const prefix0.Component(provider: const [
-                const prefix0.Provider<ApiServiceIF>(
-                    useClass: prefix2.ApiServiceProd)
+                const prefix0.Provider(
+                    provide: prefix3.ServiceA, useClass: prefix2.ApiServiceProd)
               ])
             ],
-            null),
-        r.NonGenericClassMirrorImpl(
-            r'ApiServiceIF',
-            r'.ApiServiceIF',
-            134218247,
-            2,
-            const prefix0.Reflector(),
-            const <int>[29, 30],
-            const <int>[31, 32, 13, 33, 15],
-            const <int>[],
-            -1,
-            {},
-            {},
-            {},
-            1,
-            2,
-            const <int>[],
-            const <Object>[const prefix0.Injectable()],
             null),
         r.NonGenericClassMirrorImpl(
             r'ApiService',
             r'.ApiService',
             134217735,
-            3,
+            2,
             const prefix0.Reflector(),
-            const <int>[34, 35],
-            const <int>[31, 32, 13, 33, 15, 34],
+            const <int>[29, 30],
+            const <int>[31, 32, 13, 33, 15, 29],
             const <int>[],
             -1,
             {},
             {},
             {r'': (bool b) => () => b ? prefix2.ApiService() : null},
             1,
-            3,
-            const <int>[2],
+            2,
+            const <int>[],
             const <Object>[
               const prefix0.Injectable(
                   name: 'local-ApiService', scope: prefix0.Scope.singleton)
@@ -167,26 +148,26 @@ final _data = <r.Reflectable, r.ReflectorData>{
             r'ApiServiceProd',
             r'.ApiServiceProd',
             134217735,
-            4,
+            3,
             const prefix0.Reflector(),
-            const <int>[36, 37],
-            const <int>[31, 32, 13, 33, 15, 36],
+            const <int>[34, 35],
+            const <int>[31, 32, 13, 33, 15, 34],
             const <int>[],
             -1,
             {},
             {},
             {r'': (bool b) => () => b ? prefix2.ApiServiceProd() : null},
             1,
-            4,
-            const <int>[2],
+            3,
+            const <int>[],
             const <Object>[
               const prefix0.Injectable(
                   name: 'prod-ApiService',
                   scope: prefix0.Scope.lazySingleton,
                   provider: const [
-                    const prefix0.Provider<ServiceA>(
-                        usefactory: prefix2.myFactory,
-                        deps: const [prefix3.ServiceB, prefix3.ServiceC])
+                    const prefix0.Provider(
+                        provide: prefix3.ServiceA,
+                        usefactory: prefix2.myFactory)
                   ])
             ],
             null),
@@ -194,27 +175,46 @@ final _data = <r.Reflectable, r.ReflectorData>{
             r'ServiceA',
             r'.ServiceA',
             134217735,
-            5,
+            4,
             const prefix0.Reflector(),
-            const <int>[38, 39, 40],
-            const <int>[31, 32, 13, 33, 15, 38, 39],
+            const <int>[36, 37, 38],
+            const <int>[31, 32, 13, 33, 15, 36, 37],
             const <int>[],
             -1,
             {},
             {},
             {r'': (bool b) => () => b ? prefix3.ServiceA() : null},
             2,
-            5,
+            4,
             const <int>[],
             const <Object>[
               const prefix0.Injectable(name: 'ServiceA', provider: const [
-                const prefix0.Provider(useClass: prefix3.ServiceB)
+                const prefix0.Provider(
+                    provide: prefix3.ServiceB, useClass: prefix3.ServiceB)
               ])
             ],
             null),
         r.NonGenericClassMirrorImpl(
             r'ServiceB',
             r'.ServiceB',
+            134217735,
+            5,
+            const prefix0.Reflector(),
+            const <int>[39, 40],
+            const <int>[31, 32, 13, 33, 15, 39],
+            const <int>[],
+            -1,
+            {},
+            {},
+            {r'': (bool b) => () => b ? prefix3.ServiceB() : null},
+            2,
+            5,
+            const <int>[],
+            const <Object>[const prefix0.Injectable(name: 'ServiceB')],
+            null),
+        r.NonGenericClassMirrorImpl(
+            r'ServiceC',
+            r'.ServiceC',
             134217735,
             6,
             const prefix0.Reflector(),
@@ -224,44 +224,26 @@ final _data = <r.Reflectable, r.ReflectorData>{
             -1,
             {},
             {},
-            {r'': (bool b) => () => b ? prefix3.ServiceB() : null},
-            2,
-            6,
-            const <int>[],
-            const <Object>[const prefix0.Injectable(name: 'ServiceB')],
-            null),
-        r.NonGenericClassMirrorImpl(
-            r'ServiceC',
-            r'.ServiceC',
-            134217735,
-            7,
-            const prefix0.Reflector(),
-            const <int>[43, 44],
-            const <int>[31, 32, 13, 33, 15, 43],
-            const <int>[],
-            -1,
-            {},
-            {},
             {r'': (bool b) => () => b ? prefix3.ServiceC() : null},
             2,
-            7,
+            6,
             const <int>[],
             const <Object>[const prefix0.Injectable(name: 'ServiceC')],
             null)
       ],
       <m.DeclarationMirror>[
         r.VariableMirrorImpl(r'serviceA', 134349829, 0,
-            const prefix0.Reflector(), 5, -1, -1, null, const []),
+            const prefix0.Reflector(), 4, -1, -1, null, const []),
         r.VariableMirrorImpl(r'serviceB', 134349829, 0,
-            const prefix0.Reflector(), 6, -1, -1, null, const []),
+            const prefix0.Reflector(), 5, -1, -1, null, const []),
         r.VariableMirrorImpl(r'serviceC', 134349829, 0,
-            const prefix0.Reflector(), 7, -1, -1, null, const []),
+            const prefix0.Reflector(), 6, -1, -1, null, const []),
         r.VariableMirrorImpl(r'key', 67240965, -1, const prefix0.Reflector(),
             -1, -1, -1, null, const []),
         r.VariableMirrorImpl(r'serviceA', 134349829, 1,
-            const prefix0.Reflector(), 5, -1, -1, null, const []),
+            const prefix0.Reflector(), 4, -1, -1, null, const []),
         r.VariableMirrorImpl(r'serviceB', 134349829, 1,
-            const prefix0.Reflector(), 6, -1, -1, null, const []),
+            const prefix0.Reflector(), 5, -1, -1, null, const []),
         r.MethodMirrorImpl(
             r'build',
             2097154,
@@ -365,8 +347,8 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const <int>[16, 17, 18], const prefix0.Reflector(), const []),
         r.MethodMirrorImpl(r'createElement', 2097154, -1, -1, -1, -1, null,
             const <int>[], const prefix0.Reflector(), const <Object>[override]),
-        r.MethodMirrorImpl(r'handle', 1311234, 2, -1, -1, -1, null,
-            const <int>[], const prefix0.Reflector(), const []),
+        r.MethodMirrorImpl(r'handle', 1310722, 2, -1, -1, -1, null,
+            const <int>[], const prefix0.Reflector(), const <Object>[override]),
         r.MethodMirrorImpl(r'', 64, 2, -1, -1, -1, null, const <int>[],
             const prefix0.Reflector(), const []),
         r.MethodMirrorImpl(r'==', 2097154, -1, -1, -1, -1, null,
@@ -379,23 +361,19 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const <int>[], const prefix0.Reflector(), const <Object>[override]),
         r.MethodMirrorImpl(r'', 64, 3, -1, -1, -1, null, const <int>[],
             const prefix0.Reflector(), const []),
-        r.MethodMirrorImpl(r'handle', 1310722, 4, -1, -1, -1, null,
-            const <int>[], const prefix0.Reflector(), const <Object>[override]),
-        r.MethodMirrorImpl(r'', 64, 4, -1, -1, -1, null, const <int>[],
+        r.MethodMirrorImpl(r'getText', 2097154, 4, -1, -1, -1, null,
+            const <int>[], const prefix0.Reflector(), const []),
+        r.MethodMirrorImpl(r'getCount', 2097154, 4, -1, -1, -1, null,
+            const <int>[20], const prefix0.Reflector(), const []),
+        r.MethodMirrorImpl(r'', 128, 4, -1, -1, -1, null, const <int>[],
             const prefix0.Reflector(), const []),
         r.MethodMirrorImpl(r'getText', 2097154, 5, -1, -1, -1, null,
             const <int>[], const prefix0.Reflector(), const []),
-        r.MethodMirrorImpl(r'getCount', 2097154, 5, -1, -1, -1, null,
-            const <int>[20], const prefix0.Reflector(), const []),
-        r.MethodMirrorImpl(r'', 128, 5, -1, -1, -1, null, const <int>[],
+        r.MethodMirrorImpl(r'', 64, 5, -1, -1, -1, null, const <int>[],
             const prefix0.Reflector(), const []),
         r.MethodMirrorImpl(r'getText', 2097154, 6, -1, -1, -1, null,
             const <int>[], const prefix0.Reflector(), const []),
         r.MethodMirrorImpl(r'', 64, 6, -1, -1, -1, null, const <int>[],
-            const prefix0.Reflector(), const []),
-        r.MethodMirrorImpl(r'getText', 2097154, 7, -1, -1, -1, null,
-            const <int>[], const prefix0.Reflector(), const []),
-        r.MethodMirrorImpl(r'', 64, 7, -1, -1, -1, null, const <int>[],
             const prefix0.Reflector(), const [])
       ],
       <m.ParameterMirror>[
@@ -406,7 +384,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             134358022,
             10,
             const prefix0.Reflector(),
-            5,
+            4,
             -1,
             -1,
             null,
@@ -418,7 +396,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             134358022,
             10,
             const prefix0.Reflector(),
-            6,
+            5,
             -1,
             -1,
             null,
@@ -430,7 +408,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             134358022,
             10,
             const prefix0.Reflector(),
-            7,
+            6,
             -1,
             -1,
             null,
@@ -528,7 +506,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             134358022,
             27,
             const prefix0.Reflector(),
-            5,
+            4,
             -1,
             -1,
             null,
@@ -540,7 +518,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             134358022,
             27,
             const prefix0.Reflector(),
-            6,
+            5,
             -1,
             -1,
             null,
@@ -549,20 +527,19 @@ final _data = <r.Reflectable, r.ReflectorData>{
             #serviceB),
         r.ParameterMirrorImpl(r'other', 134348806, 31,
             const prefix0.Reflector(), -1, -1, -1, null, const [], null, null),
-        r.ParameterMirrorImpl(r'i', 134348806, 39, const prefix0.Reflector(),
+        r.ParameterMirrorImpl(r'i', 134348806, 37, const prefix0.Reflector(),
             -1, -1, -1, null, const [], null, null)
       ],
       <Type>[
         prefix1.Widget1,
         prefix1.Widget2,
-        prefix2.ApiServiceIF,
         prefix2.ApiService,
         prefix2.ApiServiceProd,
         prefix3.ServiceA,
         prefix3.ServiceB,
         prefix3.ServiceC
       ],
-      8,
+      7,
       {
         r'==': (dynamic instance) => (x) => instance == x,
         r'toString': (dynamic instance) => instance.toString,

@@ -15,8 +15,9 @@ ApiServiceIF myFactory(ServiceA serviceA, ServiceB serviceB) {
   return inject<ApiServiceProd>();
 }
 
-@Component(
-    provider: [Provider<ApiServiceIF>(usefactory: myFactory)])
+@Component(provider: [
+  Provider(provide: ApiServiceIF, usefactory: myFactory),
+])
 class Widget1 extends StatelessWidget {
   final ServiceA serviceA;
   final ServiceB serviceB;
@@ -39,7 +40,7 @@ class Widget1 extends StatelessWidget {
 }
 
 @Component(provider: [
-  Provider<ApiServiceIF>(useClass: ApiServiceProd),
+  Provider(provide: ServiceA, useClass: ApiServiceProd),
 ])
 class Widget2 extends StatefulWidget {
   final ServiceA serviceA;

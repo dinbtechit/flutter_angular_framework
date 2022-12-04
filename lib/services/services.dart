@@ -1,6 +1,11 @@
 import '../annotations/annotations.dart';
 
-@Injectable(name: 'ServiceA', provider: [Provider(useClass: ServiceB)])
+@Injectable(name: 'ServiceA', provider: [
+  Provider(
+    provide: ServiceB,
+    useClass: ServiceB,
+  )
+])
 class ServiceA {
   const ServiceA();
 

@@ -45,14 +45,12 @@ T inject<T extends Object>({String? byName}) {
 /// useComponent helper
 /// Injects the component object
 T useComponent<T extends Widget>({Key? key}) {
-  for (var widget in const Reflector().annotatedClasses) {
-    if (widget.metadata.isEmpty ||
-        widget.metadata[0].runtimeType.toString() != 'Component' ||
-        widget.simpleName != T.toString()) {
-      continue;
-    }
+  var widget = const Reflector().reflectType(T) as ClassMirror?;
+  if (widget != null) {
     var constructor = widget.declarations[widget.simpleName] as MethodMirror;
     Map<Symbol, dynamic> contructorInjectArgs = {};
+
+    print(widget.metadata);
 
     for (var element in constructor.parameters) {
       try {

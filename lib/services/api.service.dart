@@ -2,7 +2,6 @@ import 'package:flutter_reflection_test/annotations/DependencyInjection.dart';
 import 'package:flutter_reflection_test/annotations/annotations.dart';
 import 'package:flutter_reflection_test/services/services.dart';
 
-@Injectable()
 abstract class ApiServiceIF {
   void handle();
 }
@@ -23,7 +22,7 @@ ServiceA myFactory() {
   name: 'prod-ApiService',
   scope: Scope.lazySingleton,
   provider: [
-    Provider<ServiceA>(usefactory: myFactory),
+    Provider(provide: ServiceA, usefactory: myFactory),
 
   ],
 )
