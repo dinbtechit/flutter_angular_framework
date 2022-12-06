@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_reflection_test/main.dart';
 import 'package:reflectable/mirrors.dart';
+import 'package:collection/collection.dart';
 
 import '../main.reflectable.dart';
 import 'annotations.dart';
@@ -15,9 +16,7 @@ class DependencyInjection {
       for (var eachInjectable in injectableClassAnnotation.metadata) {
         if (eachInjectable is! Injectable) continue;
 
-        String injectableName = eachInjectable.name == ''
-            ? injectableClassAnnotation.simpleName
-            : eachInjectable.name;
+        String injectableName = eachInjectable.name ?? injectableClassAnnotation.simpleName;
         dynamic injectableObject =
             injectableClassAnnotation.newInstance('', []);
         objectsForDI.putIfAbsent(injectableName, () => injectableObject);
@@ -46,7 +45,8 @@ T inject<T extends Object>({String? byName}) {
 /// useComponent helper
 /// Injects the component object
 T useComponent<T extends Widget>({Key? key}) {
-  var widget = const Reflector().reflectType(T) as ClassMirror?;
+  var reflector = const Reflector();
+  var widget = reflector.reflectType(T) as ClassMirror?;
   if (widget != null) {
     var constructor = widget.declarations[widget.simpleName] as MethodMirror;
     Map<Symbol, dynamic> contructorInjectArgs = {};
@@ -55,12 +55,6 @@ T useComponent<T extends Widget>({Key? key}) {
       try {
         if ( element.type.metadata.isNotEmpty &&
             element.type.metadata[0] is Injectable) {
-          var injectableClassMirror =
-          const Reflector().annotatedClasses.firstWhere((subElement) {
-            return subElement.simpleName.toLowerCase() ==
-                element.simpleName.toLowerCase();
-          }, orElse: null);
-          if (injectableClassMirror == null) continue;
           contructorInjectArgs.putIfAbsent(Symbol(element.simpleName),
                   () => inject(byName: element.simpleName));
         }
@@ -75,9 +69,5 @@ T useComponent<T extends Widget>({Key? key}) {
     if (componentInstance is T) return componentInstance;
   }
   throw Exception('useComponent<${T.toString()}> is not annotated as `@Component()`');
-}
-
-testFunction(Function func) {
-  print('disposed');
 }
 

@@ -1,7 +1,9 @@
-@GlobalQuantifyMetaCapability(Injectable, Reflector())
-@GlobalQuantifyMetaCapability(Component, Reflector())
-@GlobalQuantifyMetaCapability(Provider, Reflector())
+@GlobalQuantifyMetaCapability(Injectable, reflector)
+@GlobalQuantifyMetaCapability(Component, reflector)
+@GlobalQuantifyMetaCapability(Provider, reflector)
 import 'package:reflectable/reflectable.dart';
+
+const reflector = Reflector();
 
 class Reflector extends Reflectable {
   const Reflector()
