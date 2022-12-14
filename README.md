@@ -1,12 +1,10 @@
-# An experimental DI library using [Reflectable](https://pub.dev/packages/reflectable) Package
+# An experimental Angular Like framework for flutter using [Reflectable](https://pub.dev/packages/reflectable) Package
+
+> Not to get confused with AngularDart. This library uses Angular Concepts for Flutter.
 
 ## DO NOT USE THIS IN PRODUCTION.
 
-This is a Simple Dependency Inject Library created to experiment the potential
-of [Reflectable](https://pub.dev/packages/reflectable).
-
-It works very similar to `get_it`+ `injectable` package (but does not support all the
-functionalities).
+This framework is built using [Reflectable](https://pub.dev/packages/reflectable) to explore the potential of Reflection. Bring Angular concepts to flutter. Such as `@Component`, `@Injectable` -> Provider etc.
 
 ## Installation:
 
