@@ -4,7 +4,7 @@
 
 ## DO NOT USE THIS IN PRODUCTION.
 
-This framework is built using [Reflectable](https://pub.dev/packages/reflectable) to explore the potential of Reflection. Bring Angular concepts to flutter. Such as `@Component`, `@Injectable` -> Provider etc.
+This framework is built using [Reflectable](https://pub.dev/packages/reflectable) to explore the potential of Reflection. Brings Angular concepts to flutter. Such as `@Component`, `@Injectable` -> Provider etc.
 
 ## Installation:
 
